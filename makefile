@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -g -Wall
+CXXFLAGS = -g -Wall -Wextra -Wpedantic
 
 program: main.cpp
 	$(CXX) $(CXXFLAGS) -o program main.cpp

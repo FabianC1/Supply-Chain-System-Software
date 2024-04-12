@@ -5,4 +5,5 @@ program: main.cpp
 	$(CXX) $(CXXFLAGS) -o program main.cpp
 
 clean:
+	rm *.o
 	rm -f program

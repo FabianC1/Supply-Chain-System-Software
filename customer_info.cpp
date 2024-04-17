@@ -1,9 +1,20 @@
-// customer_info.cpp
 #include "customer_info.h"
 
-customer_info::customer_info(int customerID, std::string name, std::string email, std::string address, std::string phone)
-        : customerID(customerID), name(name), email(email), address(address), phone(phone) {}
+// Constructor to initialize customer information
+CustomerInfo::CustomerInfo(int customerID, std::string name)
+        : customerID(customerID), name(name) {}
 
-void customer_info::UpdateContactInfo(std::string newInfo) {
-    // Update the contact information
+// Method to update the customer's name
+void CustomerInfo::UpdateName(std::string newName) {
+    name = newName; // Update the name
+}
+
+// Accessor method to retrieve the customer's ID
+int CustomerInfo::GetCustomerID() const {
+    return customerID;
+}
+
+// Accessor method to retrieve the customer's name
+std::string CustomerInfo::GetName() const {
+    return name;
 }

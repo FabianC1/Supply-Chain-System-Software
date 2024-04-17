@@ -2,11 +2,11 @@
 #include "product_item.h"
 
 // Default constructor
-product_item::product_item() : productID(0), name(""), description(""), stockQuantity(0) {}
+product_item::product_item() : productID(0), name(""), description(""), stockQuantity(0), price(0.0) {}
 
 // Parameterized constructor
-product_item::product_item(int productID, std::string name, std::string description, int stockQuantity)
-        : productID(productID), name(name), description(description), stockQuantity(stockQuantity) {}
+product_item::product_item(int productID, std::string name, std::string description, int stockQuantity, double price)
+        : productID(productID), name(name), description(description), stockQuantity(stockQuantity), price(price) {}
 
 // Function to update the stock quantity
 void product_item::updateStock(int newQuantity) {
@@ -27,6 +27,7 @@ void product_item::removeStock(int quantityToRemove) {
     }
 }
 
+/* 
 product_item::product_item(std::string basicString, int i, std::string basicString1) {
 
 }
@@ -34,3 +35,4 @@ product_item::product_item(std::string basicString, int i, std::string basicStri
 auto product_item::getPrice() {
     return nullptr;
 }
+ */

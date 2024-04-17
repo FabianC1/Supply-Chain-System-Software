@@ -1,14 +1,17 @@
-//
-// Created by jagji on 17/04/2024.
-//
+#ifndef FILE_READ_H
+#define FILE_READ_H
 
-#ifndef SUPPLY_CHAIN_FILE_READ_H
-#define SUPPLY_CHAIN_FILE_READ_H
+#include <string>
+#include <vector>
 
-
-class file_read {
-
+// Struct to represent a game
+struct Game {
+    std::string name;
+    int stockQuantity;
+    double price;
 };
 
+// Declaration of readGamesFromTXT function
+std::vector<Game> readGamesFromTXT(const std::string &filename);
 
-#endif //SUPPLY_CHAIN_FILE_READ_H
+#endif // FILE_READ_H

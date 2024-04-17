@@ -1,20 +1,27 @@
 // product_item.cpp
 #include "product_item.h"
 
-product_item::product_item(int productID, std::string name, std::string description, double price, int stockQuantity)
-        : productID(productID), name(name), description(description), price(price), stockQuantity(stockQuantity) {}
+// Default constructor
+product_item::product_item() : productID(0), name(""), description(""), stockQuantity(0) {}
 
-void product_item::UpdateStock(int newQuantity) {
-    stockQuantity = newQuantity;
+// Parameterized constructor
+product_item::product_item(int productID, std::string name, std::string description, int stockQuantity)
+        : productID(productID), name(name), description(description), stockQuantity(stockQuantity) {}
+
+// Function to update the stock quantity
+void product_item::updateStock(int newQuantity) {
+    stockQuantity = newQuantity; // Update the stock quantity
 }
 
-void product_item::AddStock(int quantityToAdd) {
-    stockQuantity += quantityToAdd;
+// Function to add stock
+void product_item::addStock(int quantityToAdd) {
+    stockQuantity += quantityToAdd; // Add stock
 }
 
-void product_item::RemoveStock(int quantityToRemove) {
+// Function to remove stock
+void product_item::removeStock(int quantityToRemove) {
     if (quantityToRemove <= stockQuantity) {
-        stockQuantity -= quantityToRemove;
+        stockQuantity -= quantityToRemove; // Remove stock
     } else {
         // Handle insufficient stock
     }

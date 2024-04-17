@@ -31,6 +31,9 @@ public:
     void updateStock(int newQuantity);     // Update stock quantity
     void addStock(int quantityToAdd);      // Add stock
     void removeStock(int quantityToRemove);    // Remove stock
+    product_item(std::string basicString, int i, std::string basicString1);
+
+    auto getPrice();
 };
 
 #endif // PRODUCT_ITEM_H

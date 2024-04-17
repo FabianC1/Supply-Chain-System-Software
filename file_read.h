@@ -1,20 +1,14 @@
-#ifndef FILE_READ_H
-#define FILE_READ_H
+//
+// Created by jagji on 17/04/2024.
+//
 
-#include <string>
+#ifndef SUPPLY_CHAIN_FILE_READ_H
+#define SUPPLY_CHAIN_FILE_READ_H
 
-const int MAX_GAMES = 20; // Maximum number of games to read
 
-// Struct to represent a game
-struct Game {
-    std::string name;
-    int stockQuantity;
-    double price;
+class file_read {
+
 };
 
-// Function to read games from a TXT file
-bool readGamesFromTXT(const std::string &filename, Game games[], int &numGames);
 
-std::string getUserInputFilename();
-
-#endif // FILE_READ_H
+#endif //SUPPLY_CHAIN_FILE_READ_H

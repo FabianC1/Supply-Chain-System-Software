@@ -1,23 +1,25 @@
-// customer_info.h
-#ifndef customer_info_h
-#define customer_info_h
+#ifndef CUSTOMER_INFO_H
+#define CUSTOMER_INFO_H
 
 #include <string>
 
-class customer_info {
+class CustomerInfo {
 private:
-    int customerID;
-    std::string name;
-    std::string email;
-    std::string address;
-    std::string phone;
+    int customerID; // ID of the customer
+    std::string name; // Name of the customer
 
 public:
-    // Default constructor
-    customer_info() : customerID(0), name(""), email(""), address(""), phone("") {}
+    // Constructor to initialize customer information
+    CustomerInfo(int customerID, std::string name);
 
-    customer_info(int customerID, std::string name, std::string email, std::string address, std::string phone);
-    void UpdateContactInfo(std::string newInfo);
+    // Method to update the customer's name
+    void UpdateName(std::string newName); // Update the customer's name
+
+    // Accessor method to retrieve the customer's ID
+    int GetCustomerID() const; // Retrieve the customer's ID
+
+    // Accessor method to retrieve the customer's name
+    std::string GetName() const; // Retrieve the customer's name
 };
 
-#endif /* customer_info_h */
+#endif // CUSTOMER_INFO_H

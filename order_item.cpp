@@ -2,32 +2,33 @@
 #include <iostream>
 #include <algorithm> // Include for remove_if
 
-// Implement updateOrderStatus function
-void updateOrderStatus(std::vector<order_item>& orders, int orderID) {
+#include <iomanip> // Include for setw()
+#include <limits> // Include for numeric_limits
+
+void updateOrderStatus(std::vector<Order>& orders, int orderID) {
     bool found = false;
 
-    // Iterate through the orders vector
     for (auto& order : orders) {
-        if (order.getOrderID() == orderID) {
+        if (order.order_id == orderID) {
             found = true;
             // Update the order status
-            if (order.track_order_status() == "Order Placed") {
-                order.update_status("Packaging");
-            } else if (order.track_order_status() == "Packaging") {
-                order.update_status("Dispatched from factory");
-            } else if (order.track_order_status() == "Dispatched from factory") {
-                order.update_status("Out for delivery");
-            } else if (order.track_order_status() == "Out for delivery") {
-                order.update_status("Delivered");
+            if (order.status == "Order Placed") {
+                order.status = "Packaging";
+            } else if (order.status == "Packaging") {
+                order.status = "Dispatched from factory";
+            } else if (order.status == "Dispatched from factory") {
+                order.status = "Out for delivery";
+            } else if (order.status == "Out for delivery") {
+                order.status = "Delivered";
             } else {
                 std::cout << "Order is already delivered.\n";
                 return;
             }
-            std::cout << "Order status updated to " << order.track_order_status() << ".\n";
+            std::cout << "Order status updated to " << order.status << ".\n";
             // Remove the order if it has been delivered
-            if (order.track_order_status() == "Delivered") {
-                orders.erase(std::remove_if(orders.begin(), orders.end(), [&](const order_item& o) {
-                    return o.getOrderID() == orderID;
+            if (order.status == "Delivered") {
+                orders.erase(std::remove_if(orders.begin(), orders.end(), [&](const Order& o) {
+                    return o.order_id == orderID;
                 }), orders.end());
                 std::cout << "Order " << orderID << " has been completed and removed!\n";
             }
@@ -38,6 +39,47 @@ void updateOrderStatus(std::vector<order_item>& orders, int orderID) {
     if (!found) {
         std::cout << "Order with ID " << orderID << " not found." << std::endl;
     }
+}
+
+void displayMenu() {
+    std::cout << "-------------------------------------\n";
+    std::cout << "Menu:\n";
+    std::cout << "1. Purchase a product\n";
+    std::cout << "2. See orders & tracking status\n";
+    std::cout << "3. See customers who have purchased\n";
+    std::cout << "4. See stock\n";
+    std::cout << "5. Change order status\n";
+    std::cout << "6. Cancel an existing order\n";
+    std::cout << "7. Exit\n";
+    std::cout << "-------------------------------------\n";
+}
+
+void displayGames(const std::vector<Game>& games) {
+    int maxGameNameLength = 0;
+    for (const auto& game : games) {
+        maxGameNameLength = std::max(maxGameNameLength, static_cast<int>(game.name.length()));
+    }
+
+    std::cout << "|-----------------------------------------------------------------------------------------|\n";
+    std::cout << "|                Game Name                   | Stock Quantity |            Price          |\n";
+    std::cout << "|-----------------------------------------------------------------------------------------|\n";
+    for (const auto& game : games) {
+        std::cout << "| " << std::setw(maxGameNameLength + 4) << std::left << game.name
+                  << "| " << std::setw(15) << std::left << game.stockQuantity
+                  << "| £" << std::fixed << std::setprecision(2) << std::setw(25) << std::left << game.price << "|\n";
+    }
+    std::cout << "|-----------------------------------------------------------------------------------------|\n";
+}
+
+int getIntegerInput() {
+    int input;
+    while (!(std::cin >> input)) {
+        std::cout << "Invalid input. Please enter a number: ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the input buffer
+    return input;
 }
 
 

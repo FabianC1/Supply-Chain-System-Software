@@ -3,9 +3,7 @@
 
 #include <string>
 #include <vector> // Include for vector container
-
-// Forward declaration of struct Order
-struct Order;
+#include "file_read.h" // Include file_read.h for the Game struct
 
 class order_item {
 private:
@@ -31,6 +29,10 @@ struct Order {
 };
 
 // Function to update order status
-void updateOrderStatus(std::vector<order_item>& orders, int orderID);
+void updateOrderStatus(std::vector<Order>& orders, int orderID);
+
+void displayMenu();
+void displayGames(const std::vector<Game>& games);
+int getIntegerInput();
 
 #endif // order_item_h

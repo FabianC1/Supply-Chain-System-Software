@@ -163,7 +163,7 @@ int main(int argc, char* argv[]) {
             std::cout << "Exiting the software...\n";
             break;
         } else {
-            std::cout << "Invalid choice. Please enter a number between 1 and 5.\n";
+            std::cout << "Invalid choice. Please enter a number between 1 and 7.\n";
         }
     }
     return 0;

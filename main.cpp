@@ -17,87 +17,6 @@
 
 
 // Function to display the menu options
-void displayMenu() {
-    std::cout << "-------------------------------------\n"; // Separator line
-    std::cout << "Menu:\n";
-    std::cout << "1. Purchase a product\n";
-    std::cout << "2. See orders & tracking status\n";
-    std::cout << "3. See customers who have purchased\n";
-    std::cout << "4. See stock\n"; // Updated option to see stock
-    std::cout << "5. Change order status\n"; // Updated option to track order status
-    std::cout << "6. Exit\n"; //updated option to exit
-    std::cout << "-------------------------------------\n"; // Separator line
-}
-
-// Function to display the game data
-void displayGames(const std::vector<Game>& games) {
-    int maxGameNameLength = 0;
-    for (const auto& game : games) {
-        maxGameNameLength = std::max(maxGameNameLength, static_cast<int>(game.name.length()));
-    }
-
-    std::cout << "|-----------------------------------------------------------------------------------------|\n";
-    std::cout << "|                Game Name                   | Stock Quantity |            Price          |\n";
-    std::cout << "|-----------------------------------------------------------------------------------------|\n";
-    for (const auto& game : games) {
-        std::cout << "| " << std::setw(maxGameNameLength + 4) << std::left << game.name
-                  << "| " << std::setw(15) << std::left << game.stockQuantity
-                  << "| £" << std::fixed << std::setprecision(2) << std::setw(25) << std::left << game.price << "|\n";
-    }
-    std::cout << "|-----------------------------------------------------------------------------------------|\n";
-}
-
-
-// Function to validate user input as an integer
-int getIntegerInput() {
-    int input;
-    while (!(std::cin >> input)) {
-        std::cout << "Invalid input. Please enter a number: ";
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    }
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the input buffer
-    return input;
-}
-
-// Function to update order status
-void updateOrderStatus(std::vector<Order>& orders, int orderID) {
-    bool found = false;
-
-    for (auto& order : orders) {
-        if (order.order_id == orderID) {
-            found = true;
-            // Update the order status
-            if (order.status == "Order Placed") {
-                order.status = "Packaging";
-            } else if (order.status == "Packaging") {
-                order.status = "Dispatched from factory";
-            } else if (order.status == "Dispatched from factory") {
-                order.status = "Out for delivery";
-            } else if (order.status == "Out for delivery") {
-                order.status = "Delivered";
-            } else {
-                std::cout << "Order is already delivered.\n";
-                return;
-            }
-            std::cout << "Order status updated to " << order.status << ".\n";
-            // Remove the order if it has been delivered
-            if (order.status == "Delivered") {
-                orders.erase(std::remove_if(orders.begin(), orders.end(), [&](const Order& o) {
-                    return o.order_id == orderID;
-                }), orders.end());
-                std::cout << "Order " << orderID << " has been completed and removed!.\n";
-            }
-            break;
-        }
-    }
-
-    if (!found) {
-        std::cout << "Order with ID " << orderID << " not found." << std::endl;
-    }
-}
-
-// Function to display the menu options
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         std::cerr << "Usage: " << argv[0] << " <games_file>" << std::endl;
@@ -217,12 +136,35 @@ int main(int argc, char* argv[]) {
             std::cin >> orderID;
             updateOrderStatus(orders, orderID);
         } else if (choice == 6) {
-            std::cout << "Exiting...\n";
+            if (orders.empty()) {
+                std::cout << "No orders to cancel.\n";
+            } else {
+                std::cout << "Existing orders:\n";
+                for (const auto& order : orders) {
+                    std::cout << "Order ID: " << order.order_id << ", Product: " << order.product << ", Status: " << order.status << std::endl;
+                }
+
+                std::cout << "Enter the order ID to cancel: ";
+                int orderID;
+                std::cin >> orderID;
+
+                auto it = std::find_if(orders.begin(), orders.end(), [&](const Order& order) {
+                    return order.order_id == orderID;
+                });
+
+                if (it != orders.end()) {
+                    orders.erase(it);
+                    std::cout << "Order with ID " << orderID << " has been cancelled.\n";
+                } else {
+                    std::cout << "Order with ID " << orderID << " not found.\n";
+                }
+            }
+        } else if (choice == 7) {
+            std::cout << "Exiting the software...\n";
             break;
         } else {
             std::cout << "Invalid choice. Please enter a number between 1 and 5.\n";
         }
     }
-
     return 0;
 }

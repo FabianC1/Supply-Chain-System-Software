@@ -5,6 +5,8 @@ After that, simply type this " ./supply_chain_system.exe games.txt".
 
 It is crucial that you write the txt file with the exe, as the software uses it as a parameter when it starts up.
 
+When 'make' is run it also compiles the system_tests.cpp into an executable file, in order to run this simply type './system_tests.exe'. This will compile and run all the catch2 test cases.
+
 
 Steps on how to use the software:
 1. Purchase a product || This option displays the current available games, and allows the user to select a game they want to purchase. If the game is out stock, itll tell the 

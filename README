@@ -7,14 +7,50 @@ It is crucial that you write the txt file with the exe, as the software uses it 
 
 
 Steps on how to use the software:
-1. 
+1. Purchase a product || This option displays the current available games, and allows the user to select a game they want to purchase. If the game is out stock, itll tell the 
+user something like this: "Sorry, Call of Duty: Modern Warfare is out of stock." If the item is in stock, itll ask the user if they are sure they want to purchase the item. 
+When they say yes (y) or no (n), itll ask the user to input their name. Once they have input their name, itll tell them the order ID, which is automatically generated.
 
-2.
+2. See orders & tracking status || This option dispays the order ID, product purchased, and the status of the order. 
+But before this, it asks the user to input the order ID they want to check. 
 
-3.
+3. See customers who have purchased || This option displays all of the users who have made a purchase using the software. 
+Their customer ID and their name will also be displayed. For example:
+-------------------------------------
+Enter your choice: 3
+Customers who have purchased:
+Customer ID: 1, Name: fab
+Customer ID: 2, Name: nik
+-------------------------------------
 
-4.
+4. See stock || This option simply displays everything within the file, including Game name, Stock Quantity, and Price. It displays it in a foramtted and neat table, easily understood. Like this:
+Enter your choice: 4
+Stock:
+|-----------------------------------------------------------------------------------------|
+|                Game Name                   | Stock Quantity |            Price          |
+|-----------------------------------------------------------------------------------------|
+| Call of Duty: Modern Warfare               | 0              | £59.99                    |
+| FIFA 22                                    | 18             | £49.99                    |
+| Assassin's Creed Valhalla                  | 5              | £39.99                    |
+| The Legend of Zelda: Breath of the Wild    | 20             | £59.99                    |
+| Cyberpunk 2077                             | 10             | £49.99                    |
+| Grand Theft Auto V                         | 3              | £29.99                    |
+| Red Dead Redemption 2                      | 15             | £39.99                    |
+| Minecraft                                  | 50             | £19.99                    |
+| The Witcher 3: Wild Hunt                   | 20             | £29.99                    |
+| Overwatch                                  | 35             | £39.99                    |
+| Super Mario Odyssey                        | 1              | £49.99                    |
+| Fortnite                                   | 60             | £0.00                     |
+| PlayerUnknown's Battlegrounds (PUBG)       | 2              | £29.99                    |
+| Madden NFL 22                              | 30             | £54.99                    |
+| Halo Infinite                              | 20             | £59.99                    |
+| Animal Crossing: New Horizons              | 15             | £49.99                    |
+| Final Fantasy VII Remake                   | 5              | £44.99                    |
+| Among Us                                   | 55             | £3.99                     |
+| Genshin Impact                             | 10             | £0.00                     |
+| Rainbow Six Siege                          | 20             | £19.99                    |
+|-----------------------------------------------------------------------------------------|
 
-5.
+5. Change order status ||
 
 6. 

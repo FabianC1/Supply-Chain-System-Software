@@ -1,9 +1,15 @@
 CXX = g++
 CXXFLAGS = -g -Wall -Wextra -Wpedantic
+SYSTEM_TESTS = system_tests.cpp
+CATCH_INCLUDE = catch.hpp
 
 # Compilation rule for the executable
 supply_chain_system: customer_info.o file_read.o main.o order_item.o product_item.o
 	$(CXX) $(CXXFLAGS) -o supply_chain_system customer_info.o file_read.o main.o order_item.o product_item.o
+
+# Test executable
+system_tests: $(SYSTEM_TESTS) customer_info.o file_read.o order_item.o product_item.o
+	$(CXX) $(CXXFLAGS) -o system_tests $(SYSTEM_TESTS) customer_info.o file_read.o order_item.o product_item.o $(CATCH_INCLUDE)
 
 # Compilation rules for each source file
 customer_info.o: customer_info.cpp customer_info.h
@@ -25,3 +31,4 @@ product_item.o: product_item.cpp product_item.h
 clean:
 	rm *.o
 	rm supply_chain_system
+	rm system_tests

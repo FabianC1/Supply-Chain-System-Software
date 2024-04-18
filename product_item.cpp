@@ -27,12 +27,3 @@ void product_item::removeStock(int quantityToRemove) {
     }
 }
 
-/* 
-product_item::product_item(std::string basicString, int i, std::string basicString1) {
-
-}
-
-auto product_item::getPrice() {
-    return nullptr;
-}
- */

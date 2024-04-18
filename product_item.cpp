@@ -26,4 +26,3 @@ void product_item::removeStock(int quantityToRemove) {
         // Handle insufficient stock
     }
 }
-

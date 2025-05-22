@@ -1,3 +1,13 @@
+# ⚠️ GROUP PROJECT NOTICE ⚠️
+
+**This project is a group project originally developed and managed in [Azure DevOps](https://dev.azure.com/FG296/_git/Supply%20Chain%20System).**
+
+I was the **Project Manager (Leader)** and **Lead Developer** on this project.
+
+---
+
+
+
 How to run the software:
 
 First of all, the code needs to be complied. So in the CLI, run the "make clean" to remove the temporary .o files, and then input "make". It will compile all of the files and classes.
